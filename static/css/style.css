@@ -189,93 +189,99 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===================== SECTION 3: 예식정보 ===================== */
-.sec3 { background: #fff; }
+.sec3 { background: linear-gradient(to bottom, #fff 0%, #fff 85%, #fdf5f8 85%, #fdf5f8 100%); }
 .sec3 .section-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 60px 24px 80px;
 }
 
 .ceremony-date-wrap {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 .ceremony-year {
     font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    letter-spacing: 6px;
-    color: var(--text-light);
-    margin-bottom: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    color: #aaa;
+    margin-bottom: 12px;
+    font-weight: 400;
 }
 .ceremony-big-date {
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 4px;
+    gap: 0;
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 .ceremony-month, .ceremony-day {
     font-family: 'Playfair Display', serif;
-    font-size: 5rem;
+    font-size: 6.5rem;
     font-weight: 400;
     color: var(--text);
     letter-spacing: -2px;
 }
 .ceremony-dot-sep {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: var(--point1);
+    font-size: 4rem;
+    color: #c9a8b3;
     line-height: 1;
-    margin: 0 4px;
+    margin: 0 8px;
+    padding-bottom: 8px;
 }
 .ceremony-day-name {
-    font-size: 0.88rem;
-    letter-spacing: 4px;
-    color: var(--point1);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: #a67c88;
     font-weight: 400;
 }
 
 .ceremony-deco {
-    color: var(--point2);
-    font-size: 1rem;
-    margin: 20px 0;
-    letter-spacing: 8px;
+    color: #d4a5c2;
+    font-size: 0.8rem;
+    margin: 28px 0 32px;
+    letter-spacing: 6px;
 }
 
 .ceremony-place-wrap { text-align: center; }
 .ceremony-place-name {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--text);
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    font-family: 'Noto Serif KR', serif;
 }
 .ceremony-place-hall {
-    font-size: 0.9rem;
-    color: var(--point1);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    font-size: 0.88rem;
+    color: #a67c88;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-family: 'Noto Serif KR', serif;
 }
 .ceremony-place-addr {
-    font-size: 0.78rem;
-    color: var(--text-light);
-    letter-spacing: 0.5px;
+    font-size: 0.76rem;
+    color: #999;
+    letter-spacing: 0.3px;
+    font-family: 'Noto Serif KR', serif;
 }
 
 /* ===================== D-DAY ===================== */
 .sec-dday {
-    background: linear-gradient(135deg, #fff5f6 0%, #fdf0f0 50%, #f9f0ef 100%);
-    padding: 50px 24px;
+    background: #fdf5f8;
+    padding: 60px 24px;
     text-align: center;
-    border-top: 1px solid #f0e4e4;
-    border-bottom: 1px solid #f0e4e4;
+    border-top: none;
+    border-bottom: none;
 }
-.dday-inner { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.dday-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .dday-label {
-    font-size: 0.78rem;
-    letter-spacing: 4px;
-    color: var(--point1);
+    font-size: 0.76rem;
+    letter-spacing: 3px;
+    color: #a67c88;
     font-weight: 400;
 }
 .dday-count {
