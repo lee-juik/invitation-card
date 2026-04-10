@@ -22,9 +22,14 @@
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/aos/aos.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410v2">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410s">
 </head>
 <body>
+<!-- BGM 자동 재생 -->
+<audio autoplay loop volume="0.5">
+    <source src="{{ url_for('static', filename='audio/wedding_bgm.mp3') }}" type="audio/mpeg">
+</audio>
+
 <div id="wrap">
 
     <!-- ===== SECTION 1: 메인 ===== -->
