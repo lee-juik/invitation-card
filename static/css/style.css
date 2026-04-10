@@ -273,7 +273,7 @@ a { text-decoration: none; color: inherit; }
 /* ===================== D-DAY ===================== */
 .sec-dday {
     background: #fdf5f8;
-    padding: 60px 24px;
+    padding: 70px 24px 80px;
     text-align: center;
     border-top: none;
     border-bottom: none;
@@ -288,13 +288,14 @@ a { text-decoration: none; color: inherit; }
 .dday-count {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
+    justify-content: center;
 }
 .dday-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     min-width: 58px;
 }
 .dday-num {
@@ -756,7 +757,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .card-header {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 }
 
 .card-header h3 {
@@ -764,22 +765,24 @@ a { text-decoration: none; color: inherit; }
     font-size: 18px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 2px;
+    margin-bottom: 6px;
 }
 
 .card-hall {
     font-size: 13px;
     color: var(--bride);
     font-weight: 500;
+    margin: 0;
 }
 
 .card-addr {
     font-size: 13px;
     color: var(--text-light);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
+    line-height: 1.5;
 }
 
 .addr-label {
@@ -936,6 +939,23 @@ a { text-decoration: none; color: inherit; }
     
     .ceremony-dot-sep {
         font-size: 3rem;
+    }
+    
+    .dday-count {
+        gap: 8px;
+    }
+    
+    .dday-unit {
+        gap: 6px;
+        min-width: 50px;
+    }
+    
+    .dday-num {
+        font-size: 2rem;
+    }
+    
+    .dday-unit-label {
+        font-size: 0.55rem;
     }
     
     .map-container {
