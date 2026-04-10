@@ -43,47 +43,32 @@ a { text-decoration: none; color: inherit; }
 .groom-color { color: var(--groom) !important; }
 .bride-color { color: var(--bride) !important; }
 
-/* ===================== SECTION 1: 메인 ===================== */
-.sec1 {
+/* ===================== SECTION 1: 메인 이미지 ===================== */
+.sec1-photo-only {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 40vh;
     overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 60px;
 }
-.sec1-photo {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-.sec1-photo img {
+
+.sec1-photo-only img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-}
-.sec1-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 40%,
-        rgba(0,0,0,0.15) 70%,
-        rgba(0,0,0,0.45) 100%
-    );
+    object-position: center;
+    display: block;
 }
 
 /* 장미꽃잎 */
 #rose-petals {
     position: absolute;
     inset: 0;
-    z-index: 2;
+    z-index: 10;
     pointer-events: none;
     overflow: hidden;
+    top: 0;
 }
+
 .petal {
     position: absolute;
     top: -20px;
@@ -95,53 +80,61 @@ a { text-decoration: none; color: inherit; }
     animation: petalFall linear forwards;
     transform-origin: center;
 }
+
 @keyframes petalFall {
     0% { opacity: 0.8; transform: translateY(0) rotate(0deg) scale(1); }
     100% { opacity: 0; transform: translateY(105vh) rotate(720deg) scale(0.8); }
 }
 
-.sec1-text {
-    position: relative;
-    z-index: 3;
+/* ===================== SECTION 1: 메인 텍스트 ===================== */
+.sec1-text-section {
+    background: var(--ivory);
+    padding: 50px 24px;
     text-align: center;
-    color: #fff;
 }
+
 .sec1-sub {
     font-size: 0.85rem;
     letter-spacing: 4px;
     margin-bottom: 16px;
-    opacity: 0.9;
+    color: var(--text-light);
     font-weight: 300;
 }
+
 .sec1-names {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    gap: 12px;
+    color: var(--text);
 }
+
 .sec1-names .heart {
     font-size: 1.2rem;
-    color: #ffb3c1;
+    color: var(--point1);
 }
-.sec1-names .groom-color { color: #aed4e0 !important; }
-.sec1-names .bride-color { color: #ffcdd4 !important; }
+
+.sec1-names .groom-color { color: var(--groom) !important; }
+.sec1-names .bride-color { color: var(--bride) !important; }
+
 .sec1-date {
     font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-    opacity: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: var(--text);
     font-weight: 300;
 }
+
 .sec1-venue {
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    opacity: 0.85;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
     font-weight: 300;
+    line-height: 1.6;
 }
 
 /* ===================== SECTION 2: 인사말 ===================== */
