@@ -189,7 +189,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===================== SECTION 3: 예식정보 ===================== */
-.sec3 { background: linear-gradient(to bottom, #fff 0%, #fff 85%, #fdf5f8 85%, #fdf5f8 100%); }
+.sec3 { background: #fff; }
 .sec3 .section-inner {
     display: flex;
     flex-direction: column;
