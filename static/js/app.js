@@ -4,6 +4,7 @@ const GALLERY = [
     '/static/images/gallery/photo-01.jpg',
     '/static/images/gallery/photo-03.jpg',
     '/static/images/gallery/photo-04.jpg',
+    '/static/images/gallery/photo-05.jpg',
     '/static/images/gallery/photo-06.jpg',
     '/static/images/gallery/photo-07.jpg',
     '/static/images/gallery/photo-09.jpg',
