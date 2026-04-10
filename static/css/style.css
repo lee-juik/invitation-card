@@ -330,15 +330,16 @@ a { text-decoration: none; color: inherit; }
 .calendar {
     background: #fff;
     border-radius: 16px;
-    padding: 24px;
+    padding: 32px 28px;
     box-shadow: var(--shadow);
+    max-width: 100%;
 }
 .cal-header {
     display: flex;
     justify-content: center;
     align-items: baseline;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     color: var(--text-light);
     font-size: 0.85rem;
     letter-spacing: 3px;
@@ -352,24 +353,27 @@ a { text-decoration: none; color: inherit; }
 .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+    gap: 6px;
     text-align: center;
+    margin-bottom: 4px;
 }
 .cal-day-header {
     font-size: 0.7rem;
     color: var(--text-light);
-    padding: 6px 0;
+    padding: 10px 0;
     letter-spacing: 1px;
+    font-weight: 500;
 }
 .cal-grid div {
-    padding: 8px 0;
-    font-size: 0.85rem;
+    padding: 10px 0;
+    font-size: 0.82rem;
     color: var(--text);
     border-radius: 50%;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 36px;
 }
 .cal-wedding {
     background: var(--bride) !important;
@@ -381,8 +385,9 @@ a { text-decoration: none; color: inherit; }
     text-align: center;
     font-size: 0.82rem;
     color: var(--bride);
-    margin-top: 16px;
+    margin-top: 18px;
     letter-spacing: 1px;
+    padding-top: 8px;
 }
 
 /* ===================== SECTION 5: 갤러리 ===================== */
