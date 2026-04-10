@@ -742,15 +742,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 .location-card {
-    position: absolute;
-    bottom: 20px;
-    left: 16px;
-    right: 16px;
     background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
     animation: slideUp 0.4s ease;
 }
 

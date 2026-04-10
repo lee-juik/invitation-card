@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/aos/aos.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410m">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410n">
 </head>
 <body>
 <div id="wrap">
@@ -177,35 +177,35 @@
         <div class="section-inner">
             <h2 class="section-title">LOCATION</h2>
 
-            <!-- 지도 컨테이너 (오버레이 카드 포함) -->
+            <!-- 지도 컨테이너 -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.2934095938166!2d127.44386!3d37.27256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357193a2a2a2a2a2d%3A0x2a2a2a2a2a2a2a2a!2z67CtdHJha8+AIOyjvOyjvCDrpqzsg4nquLDrp4zsoZzsiqXsmYjrqZQgIOungOynhA!5e0!3m2!1sko!2skr!4v1712764800000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                
-                <!-- 오버레이 카드 -->
-                <div class="location-card">
-                    <div class="card-header">
-                        <h3>빌라드아모르 이천</h3>
-                        <p class="card-hall">르블루 씨엘홀</p>
-                    </div>
-                    
-                    <p class="card-addr">
-                        <span class="addr-label">📍</span>
-                        경기도 이천시 이섭대천로 921
-                    </p>
+            </div>
 
-                    <div class="card-navi">
-                        <a class="navi-icon" href="https://tmap.life/P7hR4d" 
-                           onclick="return navOpen('tmap://route?goalname=빌라드아모르이천&goaly=37.27256&goalx=127.44386', this.href)"
-                           title="티맵">
-                            🗺️
-                        </a>
-                        <a class="navi-icon" href="https://map.kakao.com/link/to/빌라드아모르이천,37.27256,127.44386" target="_blank" title="카카오내비">
-                            🚗
-                        </a>
-                        <a class="navi-icon" href="https://map.naver.com/v5/search/빌라드아모르+이천" target="_blank" title="네이버지도">
-                            📍
-                        </a>
-                    </div>
+            <!-- 정보 카드 (지도 아래) -->
+            <div class="location-card">
+                <div class="card-header">
+                    <h3>빌라드아모르 이천</h3>
+                    <p class="card-hall">르블루 씨엘홀</p>
+                </div>
+                
+                <p class="card-addr">
+                    <span class="addr-label">📍</span>
+                    경기도 이천시 이섭대천로 921
+                </p>
+
+                <div class="card-navi">
+                    <a class="navi-icon" href="https://tmap.life/P7hR4d" 
+                       onclick="return navOpen('tmap://route?goalname=빌라드아모르이천&goaly=37.27256&goalx=127.44386', this.href)"
+                       title="티맵">
+                        🗺️
+                    </a>
+                    <a class="navi-icon" href="https://map.kakao.com/link/to/빌라드아모르이천,37.27256,127.44386" target="_blank" title="카카오내비">
+                        🚗
+                    </a>
+                    <a class="navi-icon" href="https://map.naver.com/v5/search/빌라드아모르+이천" target="_blank" title="네이버지도">
+                        📍
+                    </a>
                 </div>
             </div>
 
