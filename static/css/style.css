@@ -160,9 +160,11 @@ a { text-decoration: none; color: inherit; }
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-top: 10px;
-    padding-top: 24px;
-    border-top: 1px solid #e8e0d8;
+    margin-top: 20px;
+    padding: 24px 20px;
+    border-top: none;
+    background: var(--ivory);
+    border-radius: 12px;
 }
 .parent-group {
     display: flex;
