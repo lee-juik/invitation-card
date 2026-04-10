@@ -256,7 +256,13 @@ function esc(s) {
 function initMap() {
     if (!document.getElementById('map')) return;
     const lat = 37.27256, lng = 127.44386;
-    const map = L.map('map', { zoomControl: false, scrollWheelZoom: false, attributionControl: false }).setView([lat, lng], 16);
+    const mapContainer = document.getElementById('map');
+    const map = L.map(mapContainer, { 
+        zoomControl: false, 
+        scrollWheelZoom: false, 
+        attributionControl: false,
+        dragging: false  // 초기 비활성화
+    }).setView([lat, lng], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
     const icon = L.divIcon({
         className: '',
@@ -270,6 +276,13 @@ function initMap() {
         iconAnchor: [18, 36],
     });
     L.marker([lat, lng], { icon }).addTo(map);
+    
+    // 클릭 후 드래그 가능 (포커스/블러 이벤트)
+    mapContainer.addEventListener('click', () => map.dragging.enable());
+    mapContainer.addEventListener('mouseover', () => mapContainer.style.cursor = 'grab');
+    mapContainer.addEventListener('mouseout', () => map.dragging.disable());
+    mapContainer.addEventListener('touchstart', () => map.dragging.enable());
+    mapContainer.addEventListener('touchend', () => map.dragging.disable());
 }
 
 function navOpen(appUrl, webUrl) {
