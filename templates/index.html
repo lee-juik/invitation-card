@@ -2,137 +2,289 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이주익 & 손주현 결혼식</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>이주익 ♥ 손주현</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/aos/aos.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <!-- ============ 메인 배경 (장미꽃잎 애니메이션) ============ -->
-    <section id="main-section" class="main-section">
-        <div id="main-image" class="main-image"></div>
-        <div class="rose-petals-container" id="rose-petals"></div>
-        <div class="main-overlay">
-            <h1 class="wedding-title">We're Getting Married</h1>
-            <p class="wedding-date">2026. 06. 27</p>
+<div id="wrap">
+
+    <!-- ===== SECTION 1: 메인 ===== -->
+    <section class="sec1">
+        <div class="sec1-photo">
+            <img src="{{ url_for('static', filename='images/main/main.jpg') }}" alt="main">
+            <div class="sec1-overlay"></div>
+        </div>
+        <div id="rose-petals"></div>
+        <div class="sec1-text">
+            <p class="sec1-sub">우리 결혼합니다</p>
+            <h1 class="sec1-names">
+                <span class="groom-color">이주익</span>
+                <span class="heart">♥</span>
+                <span class="bride-color">손주현</span>
+            </h1>
+            <p class="sec1-date">2026. 06. 27 토요일 오전 11시</p>
+            <p class="sec1-venue">빌라드아모르 이천 르블루 씨엘홀</p>
         </div>
     </section>
 
-    <!-- ============ 신부 신랑 소개 ============ -->
-    <section class="couple-section">
-        <div class="couple-card">
-            <h2>신랑</h2>
-            <p class="couple-name">이주익</p>
-            <p class="parents">아버지: 이철원 | 어머니: 김순자</p>
-        </div>
-        <div class="couple-divider">&</div>
-        <div class="couple-card">
-            <h2>신부</h2>
-            <p class="couple-name">손주현</p>
-            <p class="parents">아버지: 손창욱 | 어머니: 백희랑</p>
-        </div>
-    </section>
-
-    <!-- ============ 예식 정보 ============ -->
-    <section class="ceremony-section">
-        <h2>예식 정보</h2>
-        <div class="ceremony-info">
-            <p><strong>예식일시</strong> 2026년 6월 27일 (토) 11:00</p>
-            <p><strong>예식장</strong> 빌라드아모르 이천 르블루 씨엘홀</p>
-            <p><strong>주소</strong> 경기도 이천시 이섭대천로 921</p>
-        </div>
-    </section>
-
-    <!-- ============ 오시는 길 ============ -->
-    <section class="location-section">
-        <h2>오시는 길</h2>
-        <img src="{{ url_for('static', filename='images/transport-guide.jpg') }}" alt="오시는 길 안내" class="transport-image">
-    </section>
-
-    <!-- ============ 갤러리 ============ -->
-    <section class="gallery-section">
-        <h2>우리의 순간들</h2>
-        <div class="gallery-grid" id="gallery-grid"></div>
-    </section>
-
-    <!-- ============ 축의금 ============ -->
-    <section class="account-section">
-        <h2>마음 전하는 곳</h2>
-        <div class="account-container">
-            <h3>신랑측</h3>
-            <div class="account-card">
-                <p><strong>신랑 이주익</strong></p>
-                <p>농협 302-1666-8547-71</p>
+    <!-- ===== SECTION 2: 인사말 ===== -->
+    <section class="sec2" data-aos="fade-up">
+        <div class="section-inner">
+            <div class="deco-line"></div>
+            <h2 class="section-title">INVITATION</h2>
+            <div class="deco-line"></div>
+            <div class="greeting">
+                <p>
+                    서로가 마주보며 다져온 사랑을<br>
+                    이제 함께 한 곳을 바라보며<br>
+                    걸어가고자 합니다.
+                </p>
+                <p>
+                    저희 두 사람이 사랑을 약속하는 자리에<br>
+                    오셔서 축복해 주시면 감사하겠습니다.
+                </p>
             </div>
-            <div class="account-card">
-                <p><strong>혼주 이철원</strong></p>
-                <p>농협 352-2302-7369-63</p>
-            </div>
-
-            <h3>신부측</h3>
-            <div class="account-card">
-                <p><strong>신부 손주현</strong></p>
-                <p>국민 910-8666-8726</p>
-            </div>
-            <div class="account-card">
-                <p><strong>혼주 손창욱</strong></p>
-                <p>신협 132-077-978632</p>
+            <div class="parents-info">
+                <div class="parent-group">
+                    <span class="parent-label groom-color">신랑측</span>
+                    <span>이철원 · 김순자의 장남</span>
+                    <span class="parent-name groom-color">이주익</span>
+                </div>
+                <div class="parent-divider">✦</div>
+                <div class="parent-group">
+                    <span class="parent-label bride-color">신부측</span>
+                    <span>손창욱 · 백희랑의 장녀</span>
+                    <span class="parent-name bride-color">손주현</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- 화환 사양 안내 -->
-        <div class="flower-notice">
-            <p>신랑이 화환업계 종사자이므로 축하화환은 정중하게 사양하겠습니다.</p>
+    <!-- ===== SECTION 3: 예식 정보 ===== -->
+    <section class="sec3" data-aos="fade-up">
+        <div class="section-inner">
+            <h2 class="section-title">CEREMONY</h2>
+
+            <div class="ceremony-date-wrap">
+                <p class="ceremony-year">2026</p>
+                <div class="ceremony-big-date">
+                    <span class="ceremony-month">06</span>
+                    <span class="ceremony-dot-sep">.</span>
+                    <span class="ceremony-day">27</span>
+                </div>
+                <p class="ceremony-day-name">토요일 · 오전 11시</p>
+            </div>
+
+            <div class="ceremony-deco">✦</div>
+
+            <div class="ceremony-place-wrap">
+                <p class="ceremony-place-name">빌라드아모르 이천</p>
+                <p class="ceremony-place-hall">르블루 씨엘홀</p>
+                <p class="ceremony-place-addr">경기도 이천시 이섭대천로 921</p>
+            </div>
         </div>
     </section>
 
-    <!-- ============ 방명록 ============ -->
-    <section class="guestbook-section">
-        <h2>방명록</h2>
-        
-        <!-- 방명록 작성 폼 -->
-        <div class="guestbook-form-container">
-            <h3>축하 메시지를 남겨주세요</h3>
-            <form id="guestbook-form">
-                <input type="text" id="visitor-name" placeholder="이름" required>
-                <input type="text" id="visitor-id" placeholder="ID (2자 이상)" minlength="2" required>
-                <input type="password" id="visitor-password" placeholder="비밀번호 (4자 이상)" minlength="4" required>
-                <textarea id="visitor-message" placeholder="축하 메시지를 입력해주세요" rows="4" required></textarea>
-                <button type="submit" class="btn-submit">메시지 전송</button>
+    <!-- ===== SECTION D-DAY ===== -->
+    <section class="sec-dday" data-aos="fade-up">
+        <div class="dday-inner">
+            <p class="dday-label">우리의 결혼식까지</p>
+            <div class="dday-count" id="dday-count">
+                <div class="dday-unit">
+                    <span class="dday-num" id="dday-days">--</span>
+                    <span class="dday-unit-label">DAYS</span>
+                </div>
+                <span class="dday-colon">:</span>
+                <div class="dday-unit">
+                    <span class="dday-num" id="dday-hours">--</span>
+                    <span class="dday-unit-label">HOURS</span>
+                </div>
+                <span class="dday-colon">:</span>
+                <div class="dday-unit">
+                    <span class="dday-num" id="dday-mins">--</span>
+                    <span class="dday-unit-label">MINS</span>
+                </div>
+                <span class="dday-colon">:</span>
+                <div class="dday-unit">
+                    <span class="dday-num" id="dday-secs">--</span>
+                    <span class="dday-unit-label">SECS</span>
+                </div>
+            </div>
+            <p class="dday-date">2026. 06. 27 토요일 오전 11시</p>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: 달력 ===== -->
+    <section class="sec4" data-aos="fade-up">
+        <div class="section-inner">
+            <h2 class="section-title">CALENDAR</h2>
+            <div class="calendar">
+                <div class="cal-header">
+                    <span>2026</span>
+                    <span class="cal-month">JUNE</span>
+                </div>
+                <div class="cal-grid">
+                    <div class="cal-day-header">일</div>
+                    <div class="cal-day-header">월</div>
+                    <div class="cal-day-header">화</div>
+                    <div class="cal-day-header">수</div>
+                    <div class="cal-day-header">목</div>
+                    <div class="cal-day-header">금</div>
+                    <div class="cal-day-header">토</div>
+                    <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                    <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+                    <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+                    <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+                    <div class="cal-wedding">27</div><div>28</div><div>29</div><div>30</div><div></div><div></div><div></div>
+                </div>
+                <p class="cal-note">♥ 2026.06.27 토요일 오전 11시</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 5: 갤러리 ===== -->
+    <section class="sec5" data-aos="fade-up">
+        <div class="section-inner">
+            <h2 class="section-title">GALLERY</h2>
+            <div class="swiper gallery-swiper">
+                <div class="swiper-wrapper" id="gallery-wrapper"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 6: 오시는 길 ===== -->
+    <section class="sec6" data-aos="fade-up">
+        <div class="section-inner">
+            <h2 class="section-title">LOCATION</h2>
+            <p class="location-name">빌라드아모르 이천 르블루 씨엘홀</p>
+            <p class="location-addr">경기도 이천시 이섭대천로 921</p>
+
+            <div id="map"></div>
+
+            <div class="navi-buttons">
+                <a class="navi-btn tmap" href="https://tmap.life/P7hR4d" onclick="return navOpen('tmap://route?goalname=빌라드아모르이천&goaly=37.27256&goalx=127.44386', this.href)">
+                    <img src="https://www.tmap.co.kr/favicon.ico" onerror="this.style.display='none'">
+                    <span>티맵</span>
+                </a>
+                <a class="navi-btn kakao" href="https://map.kakao.com/link/to/빌라드아모르이천,37.27256,127.44386" target="_blank">
+                    <img src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/5f42ad9bef49fd000001a213.png" onerror="this.style.display='none'">
+                    <span>카카오내비</span>
+                </a>
+                <a class="navi-btn naver" href="https://map.naver.com/v5/search/빌라드아모르+이천" target="_blank">
+                    <img src="https://ssl.pstatic.net/static/maps/m/svc/nv_map.ico" onerror="this.style.display='none'">
+                    <span>네이버지도</span>
+                </a>
+            </div>
+
+            <div class="transport-img-wrap" style="margin-top:20px;">
+                <img src="{{ url_for('static', filename='images/transport-guide.jpg') }}" alt="오시는 길" class="transport-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 7: 마음 전하는 곳 ===== -->
+    <section class="sec7" data-aos="fade-up">
+        <div class="section-inner">
+            <h2 class="section-title">ACCOUNT</h2>
+            <p class="account-sub">마음 전하는 곳</p>
+
+            <div class="account-group">
+                <h3 class="account-group-title groom-color">신랑측</h3>
+                <div class="account-card" onclick="copyText('농협 302-1666-8547-71', this)">
+                    <span class="account-name">이주익 (신랑)</span>
+                    <div class="account-right">
+                        <span class="account-number"><span class="account-bank">농협</span> 302-1666-8547-71</span>
+                        <span class="copy-btn">복사</span>
+                    </div>
+                </div>
+                <div class="account-card" onclick="copyText('농협 352-2302-7369-63', this)">
+                    <span class="account-name">이철원 (신랑 부)</span>
+                    <div class="account-right">
+                        <span class="account-number"><span class="account-bank">농협</span> 352-2302-7369-63</span>
+                        <span class="copy-btn">복사</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account-group">
+                <h3 class="account-group-title bride-color">신부측</h3>
+                <div class="account-card" onclick="copyText('국민 910-8666-8726', this)">
+                    <span class="account-name">손주현 (신부)</span>
+                    <div class="account-right">
+                        <span class="account-number"><span class="account-bank">국민</span> 910-8666-8726</span>
+                        <span class="copy-btn">복사</span>
+                    </div>
+                </div>
+                <div class="account-card" onclick="copyText('신협 132-077-978632', this)">
+                    <span class="account-name">손창욱 (신부 부)</span>
+                    <div class="account-right">
+                        <span class="account-number"><span class="account-bank">신협</span> 132-077-978632</span>
+                        <span class="copy-btn">복사</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flower-notice" data-aos="fade-up">
+                <p>🌸 신랑이 화환업계 종사자이므로<br>축하화환은 정중하게 사양하겠습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 8: 방명록 ===== -->
+    <section class="sec8" data-aos="fade-up">
+        <div class="section-inner">
+            <h2 class="section-title">GUESTBOOK</h2>
+            <p class="guestbook-sub">축하 메시지를 남겨주세요</p>
+
+            <form class="guestbook-form" id="guestbook-form">
+                <div class="form-row">
+                    <input type="text" id="visitor-name" placeholder="이름" required maxlength="10">
+                    <input type="text" id="visitor-id" placeholder="ID (2자↑)" required minlength="2" maxlength="15">
+                </div>
+                <input type="password" id="visitor-password" placeholder="비밀번호 (4자 이상)" required minlength="4">
+                <textarea id="visitor-message" placeholder="축하 메시지를 입력해주세요 💌" rows="3" required maxlength="200"></textarea>
+                <button type="submit" class="btn-primary">메시지 남기기</button>
+                <p class="form-msg" id="form-msg"></p>
             </form>
-            <div id="form-message"></div>
-        </div>
 
-        <!-- 방명록 목록 -->
-        <div class="guestbook-list-container">
-            <h3>축하 메시지 (총 <span id="guestbook-count">0</span>개)</h3>
-            <div id="guestbook-list"></div>
+            <div class="guestbook-list" id="guestbook-list">
+                <p class="list-empty">첫 번째 축하 메시지를 남겨주세요 💌</p>
+            </div>
         </div>
     </section>
 
-    <!-- ============ 갤러리 모달 ============ -->
-    <div id="gallery-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <img id="modal-image" src="" alt="Gallery Image">
-            <div class="modal-nav">
-                <button id="prev-btn" class="nav-btn">&#10094;</button>
-                <button id="next-btn" class="nav-btn">&#10095;</button>
-            </div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>이주익 ♥ 손주현</p>
+        <p>2026. 06. 27</p>
+    </footer>
+
+</div>
+
+<!-- 갤러리 모달 -->
+<div id="gallery-modal" class="modal-overlay">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <img id="modal-img" src="" alt="">
+        <div class="modal-nav">
+            <button id="modal-prev">&#10094;</button>
+            <button id="modal-next">&#10095;</button>
         </div>
     </div>
+</div>
 
-    <!-- ============ 관리자 로그인 (숨김) ============ -->
-    <div id="admin-login-modal" class="modal">
-        <div class="modal-content admin-modal">
-            <span class="modal-close">&times;</span>
-            <h2>관리자 로그인</h2>
-            <input type="text" id="admin-id" placeholder="관리자 ID">
-            <input type="password" id="admin-pw" placeholder="관리자 비밀번호">
-            <button id="admin-login-btn" class="btn-submit">로그인</button>
-        </div>
-    </div>
-
-    <!-- ============ 스크립트 ============ -->
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="https://cdn.salondeletter.com/cdn/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.salondeletter.com/cdn/aos/aos.js"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

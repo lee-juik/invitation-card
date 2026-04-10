@@ -1,245 +1,280 @@
-// ============ 전역 변수 ============
-const GALLERY_IMAGES = Array.from({ length: 17 }, (_, i) => 
-    `/static/images/gallery/photo-${String(i + 1).padStart(2, '0')}.jpg`
+// ============ 갤러리 이미지 목록 ============
+const GALLERY = Array.from({length: 17}, (_, i) =>
+    `/static/images/gallery/photo-${String(i+1).padStart(2,'0')}.jpg`
 );
-let currentGalleryIndex = 0;
+let currentIdx = 0;
 
 // ============ 초기화 ============
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 700, once: true, offset: 60 });
     initRosePetals();
     initGallery();
-    initGuestbook();
+    initDday();
+    initMap();
+    loadGuestbook();
+    initGuestbookForm();
 });
 
-// ============ 장미꽃잎 애니메이션 ============
-function initRosePetals() {
-    const container = document.getElementById('rose-petals');
-    
-    function createPetal() {
-        const petal = document.createElement('div');
-        petal.className = 'rose-petal';
-        petal.style.left = Math.random() * 100 + '%';
-        petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
-        petal.style.opacity = Math.random() * 0.6 + 0.3;
-        
-        container.appendChild(petal);
-        
-        // 애니메이션 끝 후 제거
-        setTimeout(() => petal.remove(), 7000);
-    }
-    
-    // 지속적으로 꽃잎 생성
-    setInterval(createPetal, 300);
-}
+// ============ D-DAY 카운트다운 ============
+function initDday() {
+    const wedding = new Date('2026-06-27T11:00:00+09:00');
 
-// ============ 갤러리 초기화 ============
-function initGallery() {
-    const galleryGrid = document.getElementById('gallery-grid');
-    const modal = document.getElementById('gallery-modal');
-    const modalImage = document.getElementById('modal-image');
-    const closeBtn = document.querySelector('.modal-close');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    // 갤러리 그리드 생성
-    GALLERY_IMAGES.forEach((src, index) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.innerHTML = `<img src="${src}" alt="Gallery ${index + 1}">`;
-        item.addEventListener('click', () => openGallery(index));
-        galleryGrid.appendChild(item);
-    });
-
-    function openGallery(index) {
-        currentGalleryIndex = index;
-        modalImage.src = GALLERY_IMAGES[index];
-        modal.classList.add('active');
-    }
-
-    function closeGallery() {
-        modal.classList.remove('active');
-    }
-
-    closeBtn.addEventListener('click', closeGallery);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeGallery();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
-        modalImage.src = GALLERY_IMAGES[currentGalleryIndex];
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
-        modalImage.src = GALLERY_IMAGES[currentGalleryIndex];
-    });
-
-    // 키보드 네비게이션
-    document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('active')) return;
-        if (e.key === 'ArrowLeft') prevBtn.click();
-        if (e.key === 'ArrowRight') nextBtn.click();
-        if (e.key === 'Escape') closeGallery();
-    });
-}
-
-// ============ 방명록 초기화 ============
-function initGuestbook() {
-    const form = document.getElementById('guestbook-form');
-    const list = document.getElementById('guestbook-list');
-    const count = document.getElementById('guestbook-count');
-    const formMessage = document.getElementById('form-message');
-
-    // 방명록 로드
-    loadGuestbook();
-
-    // 폼 제출
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const visitorName = document.getElementById('visitor-name').value.trim();
-        const visitorId = document.getElementById('visitor-id').value.trim();
-        const password = document.getElementById('visitor-password').value.trim();
-        const message = document.getElementById('visitor-message').value.trim();
-
-        if (!visitorName || !visitorId || !password || !message) {
-            showFormMessage('모든 필드를 입력해주세요.', 'error');
+    function update() {
+        const now = new Date();
+        const diff = wedding - now;
+        if (diff <= 0) {
+            document.getElementById('dday-days').textContent = '00';
+            document.getElementById('dday-hours').textContent = '00';
+            document.getElementById('dday-mins').textContent = '00';
+            document.getElementById('dday-secs').textContent = '00';
             return;
         }
+        const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('dday-days').textContent  = String(days).padStart(2, '0');
+        document.getElementById('dday-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('dday-mins').textContent  = String(mins).padStart(2, '0');
+        document.getElementById('dday-secs').textContent  = String(secs).padStart(2, '0');
+    }
+    update();
+    setInterval(update, 1000);
+}
+
+// ============ 장미꽃잎 ============
+function initRosePetals() {
+    const container = document.getElementById('rose-petals');
+    if (!container) return;
+
+    function makePetal() {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        const size = Math.random() * 8 + 8;
+        p.style.cssText = `
+            left: ${Math.random() * 100}%;
+            width: ${size}px;
+            height: ${size * 1.3}px;
+            animation-duration: ${Math.random() * 4 + 5}s;
+            animation-delay: ${Math.random() * 2}s;
+            opacity: ${Math.random() * 0.5 + 0.4};
+        `;
+        container.appendChild(p);
+        p.addEventListener('animationend', () => p.remove());
+    }
+
+    setInterval(makePetal, 350);
+}
+
+// ============ 갤러리 (Swiper) ============
+function initGallery() {
+    const wrapper = document.getElementById('gallery-wrapper');
+    if (!wrapper) return;
+
+    GALLERY.forEach((src, idx) => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `<img src="${src}" alt="갤러리 ${idx+1}" loading="lazy">`;
+        slide.addEventListener('click', () => openModal(idx));
+        wrapper.appendChild(slide);
+    });
+
+    new Swiper('.gallery-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: {
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+        },
+        loop: true,
+    });
+}
+
+// ============ 갤러리 모달 ============
+function openModal(idx) {
+    currentIdx = idx;
+    document.getElementById('modal-img').src = GALLERY[idx];
+    document.getElementById('gallery-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('gallery-modal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('modal-prev')?.addEventListener('click', () => {
+    currentIdx = (currentIdx - 1 + GALLERY.length) % GALLERY.length;
+    document.getElementById('modal-img').src = GALLERY[currentIdx];
+});
+
+document.getElementById('modal-next')?.addEventListener('click', () => {
+    currentIdx = (currentIdx + 1) % GALLERY.length;
+    document.getElementById('modal-img').src = GALLERY[currentIdx];
+});
+
+document.getElementById('gallery-modal')?.addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+});
+
+// ============ 계좌 복사 ============
+function copyText(text, el) {
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = el.querySelector('.copy-btn');
+        if (btn) {
+            btn.textContent = '✓ 복사됨';
+            setTimeout(() => btn.textContent = '복사', 2000);
+        }
+    }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        const btn = el.querySelector('.copy-btn');
+        if (btn) {
+            btn.textContent = '✓ 복사됨';
+            setTimeout(() => btn.textContent = '복사', 2000);
+        }
+    });
+}
+
+// ============ 방명록 ============
+function initGuestbookForm() {
+    const form = document.getElementById('guestbook-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const msg = document.getElementById('form-msg');
+        const data = {
+            visitor_name: document.getElementById('visitor-name').value.trim(),
+            visitor_id: document.getElementById('visitor-id').value.trim(),
+            password: document.getElementById('visitor-password').value.trim(),
+            message: document.getElementById('visitor-message').value.trim(),
+        };
 
         try {
-            const response = await fetch('/api/guestbook/add', {
+            const res = await fetch('/api/guestbook/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    visitor_name: visitorName,
-                    visitor_id: visitorId,
-                    password: password,
-                    message: message
-                })
+                body: JSON.stringify(data),
             });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                showFormMessage('축하 메시지가 등록되었습니다! ✨', 'success');
+            const result = await res.json();
+            if (res.ok) {
+                msg.style.color = '#5f8b9b';
+                msg.textContent = '✓ 메시지가 등록되었습니다!';
                 form.reset();
                 loadGuestbook();
             } else {
-                showFormMessage(data.error || '오류가 발생했습니다.', 'error');
+                msg.style.color = '#BB7273';
+                msg.textContent = result.error || '오류가 발생했습니다.';
             }
-        } catch (error) {
-            showFormMessage('네트워크 오류가 발생했습니다.', 'error');
-            console.error(error);
+        } catch {
+            msg.style.color = '#BB7273';
+            msg.textContent = '네트워크 오류가 발생했습니다.';
         }
+        setTimeout(() => msg.textContent = '', 3000);
     });
-
-    function showFormMessage(message, type) {
-        formMessage.textContent = message;
-        formMessage.style.color = type === 'error' ? '#d32f2f' : '#388e3c';
-        setTimeout(() => {
-            formMessage.textContent = '';
-        }, 3000);
-    }
-
-    async function loadGuestbook() {
-        try {
-            const response = await fetch('/api/guestbook/list');
-            const guestbooks = await response.json();
-
-            list.innerHTML = '';
-            count.textContent = guestbooks.length;
-
-            if (guestbooks.length === 0) {
-                list.innerHTML = '<p style="text-align: center; color: #999;">첫 번째 축하 메시지를 남겨주세요! 💌</p>';
-                return;
-            }
-
-            guestbooks.forEach((item) => {
-                const div = document.createElement('div');
-                div.className = 'guestbook-item';
-                
-                const date = new Date(item.date);
-                const dateStr = date.toLocaleDateString('ko-KR', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                });
-
-                div.innerHTML = `
-                    <div class="guestbook-item-header">
-                        <span class="guestbook-item-name">${escapeHtml(item.name)}</span>
-                        <span class="guestbook-item-date">${dateStr}</span>
-                    </div>
-                    <div class="guestbook-item-message">${escapeHtml(item.message)}</div>
-                `;
-                
-                list.appendChild(div);
-            });
-        } catch (error) {
-            console.error('방명록 로드 오류:', error);
-        }
-    }
-
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
 }
 
+async function loadGuestbook() {
+    const list = document.getElementById('guestbook-list');
+    if (!list) return;
 
+    try {
+        const res = await fetch('/api/guestbook/list');
+        const items = await res.json();
 
-// ============ 관리자 패널 (비상 사용) ============
-window.adminLogin = function() {
-    const modal = document.getElementById('admin-login-modal');
-    const loginBtn = document.getElementById('admin-login-btn');
-    const closeBtn = modal.querySelector('.modal-close');
-
-    modal.classList.add('active');
-
-    loginBtn.addEventListener('click', async () => {
-        const adminId = document.getElementById('admin-id').value;
-        const adminPw = document.getElementById('admin-pw').value;
-
-        try {
-            const response = await fetch('/api/admin/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    admin_id: adminId,
-                    admin_pw: adminPw
-                })
-            });
-
-            if (response.ok) {
-                alert('관리자 로그인 성공!');
-                modal.classList.remove('active');
-                // TODO: 관리자 대시보드로 이동
-            } else {
-                alert('로그인 실패: 아이디 또는 비밀번호를 확인하세요.');
-            }
-        } catch (error) {
-            console.error('로그인 오류:', error);
+        if (!items.length) {
+            list.innerHTML = '<p class="list-empty">첫 번째 축하 메시지를 남겨주세요 💌</p>';
+            return;
         }
-    });
 
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-};
+        list.innerHTML = items.map(item => {
+            const d = new Date(item.date);
+            const dateStr = `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+            return `
+            <div class="guestbook-item" id="gi-${item.id}">
+                <div class="guestbook-item-header">
+                    <span class="guestbook-item-name">${esc(item.name)}</span>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="guestbook-item-date">${dateStr}</span>
+                        <button class="del-btn" onclick="deleteItem(${item.id})">삭제</button>
+                    </div>
+                </div>
+                <p class="guestbook-item-msg">${esc(item.message)}</p>
+            </div>`;
+        }).join('');
+    } catch {}
+}
 
-// ============ 스크롤 네비게이션 ============
-document.addEventListener('DOMContentLoaded', () => {
-    // 부드러운 스크롤
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+}
+
+// ============ 지도 ============
+function initMap() {
+    if (!document.getElementById('map')) return;
+    const lat = 37.27256, lng = 127.44386;
+    const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([lat, lng], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+    const icon = L.divIcon({
+        className: '',
+        html: `<div style="
+            background:var(--bride,#BB7273);
+            width:36px;height:36px;border-radius:50% 50% 50% 0;
+            transform:rotate(-45deg);border:3px solid #fff;
+            box-shadow:0 2px 8px rgba(0,0,0,0.3);
+        "></div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 36],
+    });
+    L.marker([lat, lng], { icon })
+        .addTo(map)
+        .bindPopup('<b>빌라드아모르 이천</b><br>르블루 씨엘홀')
+        .openPopup();
+}
+
+function navOpen(appUrl, webUrl) {
+    const ua = navigator.userAgent;
+    if (/android/i.test(ua) || /iphone|ipad/i.test(ua)) {
+        window.location.href = appUrl;
+        setTimeout(() => window.open(webUrl, '_blank'), 1500);
+        return false;
+    }
+    return true;
+}
+
+// ============ 방명록 삭제 ============
+async function deleteItem(id) {
+    const pw = prompt('비밀번호를 입력하세요:');
+    if (pw === null) return;
+    try {
+        const res = await fetch('/api/guestbook/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, password: pw }),
         });
-    });
-});
+        const result = await res.json();
+        if (res.ok) {
+            const el = document.getElementById(`gi-${id}`);
+            if (el) el.remove();
+        } else {
+            alert(result.error || '삭제 실패');
+        }
+    } catch {
+        alert('네트워크 오류');
+    }
+}
