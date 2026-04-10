@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRosePetals();
     initGallery();
     initDday();
+    initMap();
     loadGuestbook();
     initGuestbookForm();
 });
@@ -233,6 +234,26 @@ function esc(s) {
     const d = document.createElement('div');
     d.textContent = s;
     return d.innerHTML;
+}
+
+// ============ 지도 ============
+function initMap() {
+    if (!document.getElementById('map')) return;
+    const lat = 37.27256, lng = 127.44386;
+    const map = L.map('map', { zoomControl: false, scrollWheelZoom: false, attributionControl: false }).setView([lat, lng], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    const icon = L.divIcon({
+        className: '',
+        html: `<div style="
+            background:#BB7273;
+            width:36px;height:36px;border-radius:50% 50% 50% 0;
+            transform:rotate(-45deg);border:3px solid #fff;
+            box-shadow:0 2px 8px rgba(0,0,0,0.3);
+        "></div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 36],
+    });
+    L.marker([lat, lng], { icon }).addTo(map);
 }
 
 function navOpen(appUrl, webUrl) {

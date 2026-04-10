@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/aos/aos.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410q">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410r">
 </head>
 <body>
 <div id="wrap">
@@ -179,7 +179,7 @@
 
             <!-- 지도 컨테이너 -->
             <div class="map-container">
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=37.27256,127.44386&zoom=15&size=600x420&markers=color:red%7C37.27256,127.44386&style=feature:all%7Celement:labels%7Cvisibility:off&key=AIzaSyAVpJz1VPE1Y2c1YcD0XoFl1Dv6_M3LqMg" alt="빌라드아모르 이천 르블루 씨엘홀 지도" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div id="map"></div>
             </div>
 
             <!-- 정보 카드 (지도 아래) -->
