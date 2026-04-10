@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.salondeletter.com/cdn/aos/aos.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410f">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260410g">
 </head>
 <body>
 <div id="wrap">
@@ -197,6 +197,44 @@
                     <button class="transport-btn" onclick="openTransportModal()">
                         📸 교통 안내 보기 →
                     </button>
+                </div>
+            </div>
+
+            <!-- 교통 정보 카드 -->
+            <div class="transport-info-cards">
+                <div class="transport-card">
+                    <div class="transport-icon">🚗</div>
+                    <h3>네비게이션 이용시</h3>
+                    <div class="transport-detail">
+                        <p class="transport-label">지번주소</p>
+                        <p class="transport-text">경기이천시 음둥로 215</p>
+                        <p class="transport-label" style="margin-top: 10px;">도로명주소</p>
+                        <p class="transport-text">경기 이천시 이천로 921</p>
+                    </div>
+                </div>
+
+                <div class="transport-card">
+                    <div class="transport-icon">🚗</div>
+                    <h3>자가용 이용시</h3>
+                    <div class="transport-detail">
+                        <p class="transport-label">중부고속도로</p>
+                        <p class="transport-text">서이천 IC → 이천 장호원로 → 이천사거리 우회전 → 약 2.6km 직진</p>
+                        <p class="transport-label" style="margin-top: 10px;">영동고속도로</p>
+                        <p class="transport-text">이천 IC → 이천 궁중, 서울 방향 → 이천사거리 우회전 → 약 2.6km 직진</p>
+                    </div>
+                </div>
+
+                <div class="transport-card">
+                    <div class="transport-icon">🚌</div>
+                    <h3>버스 이용시</h3>
+                    <div class="transport-detail">
+                        <p class="transport-label">이천역</p>
+                        <p class="transport-text">3번, 12번, 12-1번</p>
+                        <p class="transport-label" style="margin-top: 10px;">이천터미널</p>
+                        <p class="transport-text">(SC제일은행 옆 정류장) 22-3번, 22-9번</p>
+                        <p class="transport-label" style="margin-top: 10px;">도보</p>
+                        <p class="transport-text">중앙거리 입구 하차 → 도보 300m</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1011,3 +1011,81 @@ a { text-decoration: none; color: inherit; }
         font-size: 16px;
     }
 }
+
+/* ===================== 교통 정보 카드 ===================== */
+.transport-info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.transport-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.transport-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.transport-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.transport-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.transport-detail {
+    text-align: left;
+}
+
+.transport-label {
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.transport-text {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .transport-info-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 30px;
+    }
+    
+    .transport-card {
+        padding: 20px 16px;
+    }
+    
+    .transport-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .transport-card h3 {
+        font-size: 0.95rem;
+    }
+}
