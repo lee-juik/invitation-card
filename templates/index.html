@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이주익 & 손주현 결혼식</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- ============ 메인 배경 (장미꽃잎 애니메이션) ============ -->
+    <section id="main-section" class="main-section">
+        <div id="main-image" class="main-image"></div>
+        <div class="rose-petals-container" id="rose-petals"></div>
+        <div class="main-overlay">
+            <h1 class="wedding-title">We're Getting Married</h1>
+            <p class="wedding-date">2026. 06. 27</p>
+        </div>
+    </section>
+
+    <!-- ============ 신부 신랑 소개 ============ -->
+    <section class="couple-section">
+        <div class="couple-card">
+            <h2>신랑</h2>
+            <p class="couple-name">이주익</p>
+            <p class="parents">아버지: 이철원 | 어머니: 김순자</p>
+        </div>
+        <div class="couple-divider">&</div>
+        <div class="couple-card">
+            <h2>신부</h2>
+            <p class="couple-name">손주현</p>
+            <p class="parents">아버지: 손창욱 | 어머니: 백희랑</p>
+        </div>
+    </section>
+
+    <!-- ============ 예식 정보 ============ -->
+    <section class="ceremony-section">
+        <h2>예식 정보</h2>
+        <div class="ceremony-info">
+            <p><strong>예식일시</strong> 2026년 6월 27일 (토) 11:00</p>
+            <p><strong>예식장</strong> 빌라드아모르 이천 르블루 씨엘홀</p>
+            <p><strong>주소</strong> 경기도 이천시 이섭대천로 921</p>
+        </div>
+    </section>
+
+    <!-- ============ 오시는 길 ============ -->
+    <section class="location-section">
+        <h2>오시는 길</h2>
+        <img src="{{ url_for('static', filename='images/transport-guide.jpg') }}" alt="오시는 길 안내" class="transport-image">
+    </section>
+
+    <!-- ============ 갤러리 ============ -->
+    <section class="gallery-section">
+        <h2>우리의 순간들</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- ============ 축의금 ============ -->
+    <section class="account-section">
+        <h2>마음 전하는 곳</h2>
+        <div class="account-container">
+            <h3>신랑측</h3>
+            <div class="account-card">
+                <p><strong>신랑 이주익</strong></p>
+                <p>농협 302-1666-8547-71</p>
+            </div>
+            <div class="account-card">
+                <p><strong>혼주 이철원</strong></p>
+                <p>농협 352-2302-7369-63</p>
+            </div>
+
+            <h3>신부측</h3>
+            <div class="account-card">
+                <p><strong>신부 손주현</strong></p>
+                <p>국민 910-8666-8726</p>
+            </div>
+            <div class="account-card">
+                <p><strong>혼주 손창욱</strong></p>
+                <p>신협 132-077-978632</p>
+            </div>
+        </div>
+
+        <!-- 화환 사양 안내 -->
+        <div class="flower-notice">
+            <p>신랑이 화환업계 종사자이므로 축하화환은 정중하게 사양하겠습니다.</p>
+        </div>
+    </section>
+
+    <!-- ============ 방명록 ============ -->
+    <section class="guestbook-section">
+        <h2>방명록</h2>
+        
+        <!-- 방명록 작성 폼 -->
+        <div class="guestbook-form-container">
+            <h3>축하 메시지를 남겨주세요</h3>
+            <form id="guestbook-form">
+                <input type="text" id="visitor-name" placeholder="이름" required>
+                <input type="text" id="visitor-id" placeholder="ID (2자 이상)" minlength="2" required>
+                <input type="password" id="visitor-password" placeholder="비밀번호 (4자 이상)" minlength="4" required>
+                <textarea id="visitor-message" placeholder="축하 메시지를 입력해주세요" rows="4" required></textarea>
+                <button type="submit" class="btn-submit">메시지 전송</button>
+            </form>
+            <div id="form-message"></div>
+        </div>
+
+        <!-- 방명록 목록 -->
+        <div class="guestbook-list-container">
+            <h3>축하 메시지 (총 <span id="guestbook-count">0</span>개)</h3>
+            <div id="guestbook-list"></div>
+        </div>
+    </section>
+
+    <!-- ============ 갤러리 모달 ============ -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modal-image" src="" alt="Gallery Image">
+            <div class="modal-nav">
+                <button id="prev-btn" class="nav-btn">&#10094;</button>
+                <button id="next-btn" class="nav-btn">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 관리자 로그인 (숨김) ============ -->
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content admin-modal">
+            <span class="modal-close">&times;</span>
+            <h2>관리자 로그인</h2>
+            <input type="text" id="admin-id" placeholder="관리자 ID">
+            <input type="password" id="admin-pw" placeholder="관리자 비밀번호">
+            <button id="admin-login-btn" class="btn-submit">로그인</button>
+        </div>
+    </div>
+
+    <!-- ============ 스크립트 ============ -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
