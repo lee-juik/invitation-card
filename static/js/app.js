@@ -27,7 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initMap();
     loadGuestbook();
     initGuestbookForm();
+    initBGM();
 });
+
+// ============ BGM 자동 재생 (모바일 호환) ============
+function initBGM() {
+    const bgm = document.getElementById('bgm-player');
+    if (!bgm) return;
+    bgm.volume = 0.5;
+    const playAudio = () => {
+        bgm.muted = false;
+        bgm.play().catch(() => {});
+        document.removeEventListener('click', playAudio);
+        document.removeEventListener('touchstart', playAudio);
+    };
+    document.addEventListener('click', playAudio);
+    document.addEventListener('touchstart', playAudio);
+}
 
 // ============ D-DAY 카운트다운 ============
 function initDday() {
