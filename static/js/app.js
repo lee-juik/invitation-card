@@ -1,7 +1,7 @@
 // ============ 갤러리 이미지 목록 ============
 const GALLERY = [
-    '/static/images/gallery/photo-01.jpg',
     '/static/images/gallery/photo-02.jpg',
+    '/static/images/gallery/photo-01.jpg',
     '/static/images/gallery/photo-03.jpg',
     '/static/images/gallery/photo-04.jpg',
     '/static/images/gallery/photo-06.jpg',
