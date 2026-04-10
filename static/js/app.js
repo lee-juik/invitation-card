@@ -1,7 +1,21 @@
 // ============ 갤러리 이미지 목록 ============
-const GALLERY = Array.from({length: 17}, (_, i) =>
-    `/static/images/gallery/photo-${String(i+1).padStart(2,'0')}.jpg`
-);
+const GALLERY = [
+    '/static/images/gallery/photo-01.jpg',
+    '/static/images/gallery/photo-02.jpg',
+    '/static/images/gallery/photo-03.jpg',
+    '/static/images/gallery/photo-04.jpg',
+    '/static/images/gallery/photo-06.jpg',
+    '/static/images/gallery/photo-07.jpg',
+    '/static/images/gallery/photo-09.jpg',
+    '/static/images/gallery/photo-10.jpg',
+    '/static/images/gallery/photo-11.jpg',
+    '/static/images/gallery/photo-12.jpg',
+    '/static/images/gallery/photo-13.jpg',
+    '/static/images/gallery/photo-14.jpg',
+    '/static/images/gallery/photo-15.jpg',
+    '/static/images/gallery/photo-16.jpg',
+    '/static/images/gallery/photo-17.jpg',
+];
 let currentIdx = 0;
 
 // ============ 초기화 ============
