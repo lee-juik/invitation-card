@@ -195,11 +195,11 @@ a { text-decoration: none; color: inherit; }
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 60px 24px 80px;
+    padding: 50px 20px 60px;
 }
 
 .ceremony-date-wrap {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 .ceremony-year {
     font-family: 'Playfair Display', serif;
@@ -219,10 +219,11 @@ a { text-decoration: none; color: inherit; }
 }
 .ceremony-month, .ceremony-day {
     font-family: 'Playfair Display', serif;
-    font-size: 6.5rem;
+    font-size: 5.8rem;
     font-weight: 400;
     color: var(--text);
     letter-spacing: -2px;
+    line-height: 1;
 }
 .ceremony-dot-sep {
     font-family: 'Playfair Display', serif;
@@ -929,6 +930,14 @@ a { text-decoration: none; color: inherit; }
 
 /* 모바일 반응형 */
 @media (max-width: 480px) {
+    .ceremony-month, .ceremony-day {
+        font-size: 4.5rem;
+    }
+    
+    .ceremony-dot-sep {
+        font-size: 3rem;
+    }
+    
     .map-container {
         height: 380px;
     }
