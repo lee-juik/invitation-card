@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initRosePetals();
     initGallery();
     initDday();
-    initMap();
     loadGuestbook();
     initGuestbookForm();
 });
@@ -236,31 +235,6 @@ function esc(s) {
     return d.innerHTML;
 }
 
-// ============ 지도 ============
-function initMap() {
-    if (!document.getElementById('map')) return;
-    const lat = 37.27256, lng = 127.44386;
-    const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([lat, lng], 16);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-    const icon = L.divIcon({
-        className: '',
-        html: `<div style="
-            background:var(--bride,#BB7273);
-            width:36px;height:36px;border-radius:50% 50% 50% 0;
-            transform:rotate(-45deg);border:3px solid #fff;
-            box-shadow:0 2px 8px rgba(0,0,0,0.3);
-        "></div>`,
-        iconSize: [36, 36],
-        iconAnchor: [18, 36],
-    });
-    L.marker([lat, lng], { icon })
-        .addTo(map)
-        .bindPopup('<b>빌라드아모르 이천</b><br>르블루 씨엘홀')
-        .openPopup();
-}
-
 function navOpen(appUrl, webUrl) {
     const ua = navigator.userAgent;
     if (/android/i.test(ua) || /iphone|ipad/i.test(ua)) {
@@ -293,38 +267,4 @@ async function deleteItem(id) {
     }
 }
 
-// ============ 교통 안내 모달 ============
-function openTransportModal() {
-    const modal = document.getElementById('transport-modal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
 
-function closeTransportModal() {
-    const modal = document.getElementById('transport-modal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-// 모달 배경 클릭으로 닫기
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('transport-modal');
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeTransportModal();
-            }
-        });
-    }
-});
-
-// ESC 키로 닫기
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeTransportModal();
-    }
-});
