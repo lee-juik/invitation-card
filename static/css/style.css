@@ -714,3 +714,267 @@ a { text-decoration: none; color: inherit; }
 /* ===================== AOS 오버라이드 ===================== */
 [data-aos] { pointer-events: none; }
 [data-aos].aos-animate { pointer-events: auto; }
+
+/* ===================== SECTION 6: 오버레이 카드 (새로운) ===================== */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.location-card {
+    position: absolute;
+    bottom: 20px;
+    left: 16px;
+    right: 16px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    z-index: 100;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-header {
+    margin-bottom: 12px;
+}
+
+.card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.card-hall {
+    font-size: 13px;
+    color: var(--bride);
+    font-weight: 500;
+}
+
+.card-addr {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.addr-label {
+    font-size: 16px;
+}
+
+.card-navi {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.navi-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #f0f0f0;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #fafafa;
+    cursor: pointer;
+}
+
+.navi-icon:hover {
+    background: linear-gradient(135deg, var(--groom) 0%, var(--bride) 100%);
+    border-color: var(--bride);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(187, 114, 115, 0.25);
+}
+
+.transport-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--groom) 0%, var(--bride) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+}
+
+.transport-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(187, 114, 115, 0.35);
+}
+
+.transport-btn:active {
+    transform: translateY(0);
+}
+
+/* 모달 */
+.transport-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.transport-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    max-width: 100%;
+    width: 100%;
+    max-height: 90vh;
+    padding: 24px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
+    animation: slideInUp 0.4s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--text);
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--text);
+}
+
+.modal-close:hover {
+    background: var(--bride);
+    color: white;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 480px) {
+    .map-container {
+        height: 380px;
+    }
+
+    .location-card {
+        bottom: 16px;
+        left: 12px;
+        right: 12px;
+        padding: 16px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .card-addr {
+        font-size: 12px;
+    }
+
+    .transport-btn {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .modal-content {
+        padding: 16px;
+    }
+
+    .modal-content h3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .map-container {
+        height: 340px;
+    }
+
+    .card-navi {
+        gap: 8px;
+    }
+
+    .navi-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}

@@ -278,3 +278,39 @@ async function deleteItem(id) {
         alert('네트워크 오류');
     }
 }
+
+// ============ 교통 안내 모달 ============
+function openTransportModal() {
+    const modal = document.getElementById('transport-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeTransportModal() {
+    const modal = document.getElementById('transport-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// 모달 배경 클릭으로 닫기
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('transport-modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeTransportModal();
+            }
+        });
+    }
+});
+
+// ESC 키로 닫기
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeTransportModal();
+    }
+});
